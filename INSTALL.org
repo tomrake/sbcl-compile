@@ -1,0 +1,40 @@
+* Why this?
+There is a reference in the SBCL source distribution TODO:
+#+BEGIN_EXAMPLE
+  WINDOWS
+
+  Needs love.
+#+END_EXAMPLE
+
+* Goals (in order of importance)
+  - Improve SBCL
+  - Improve SBCL on Windows
+  - Improve SBCL on MSYS2 on Windows
+  - Imporve SBCL on MSYS2-UCRT64 on Windows
+
+* On SBCL
+In the 1970s computer scientist developed various computer hardware systems.
+Lisp Machines began at MIT in 1973.
+The Pascal focused PERQ workstation was designed at Caragie Mellon Univerity in 
+
+In the late 70s and early a Pascal focused workstation was desgined at Caragie Mellon University in Pittsburg named PERQ
+PERQ was an early workstation computer design inspired by the Xerox Alto.
+Spice LISP was a Lisp targeting the microcode on the PERQ machines.
+During the Common Lisp standardization process, 1981 to 1994, Spice LISP evolved into CMUCL.
+SBCL was forked from CMUCL in 1999.
+- SBCL is a fork of CMUCL
+  CMUCL started as a largely unix based software
+  - [[https://cmucl.org/]]
+  - [[https://en.wikipedia.org/wiki/CMU_Common_Lisp]]
+
+  
+* On MSYS2
+
+
+* Compile SBCL under msys2
+** Start with instructions
+- [[https://solarianprogrammer.com/2019/08/20/building-sbcl-steel-bank-common-lisp-windows/]]
+- SBCL source code
+  - INSTALL is very good
+* Compile released versions SBCL under msys2
+* Compile and test released versions of SBCL under msys2 
