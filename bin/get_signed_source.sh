@@ -1,16 +1,4 @@
 #! /bin/bash
-## The release version we reference
-RELEASE_VERSION=${RELEASE_VERSION:="2.4.0"}
-## The public signature of the signer   
-SIGNING_KEY=D6839CA0A67F74D9DFB70922EBD595A9100D63CD
-## The current signer
-SIGNER=crhodes
-## Where the GPG keys are stored
-KEY_BASE=./.gnupg
-## THe signed files
-SIGNING_FILE=${SIGNER}.asc
-
-export ${RELEASE_VERSION}
 
 signing_file_url=https://master.dl.sourceforge.net/project/sbcl/sbcl/${RELEASE_VERSION}/sbcl-${RELEASE_VERSION}-${SIGNING_FILE}?viasf=1
 CREDENTIALS=credentials
@@ -19,7 +7,9 @@ cd ${RELEASE_VERSION}
 # GET THE PUBLIC KEYS OF THE SIGNER
 gpg --homedir "${KEY_BASE}" --list-keys "${SIGNING_KEY}" || gpg --homedir "${KEY_BASE}" --recv-keys "${SIGNING_KEY}"
 # GET A ENCRYPTED MESSAGE FROM THE SERVER
-curl ${signing_file_url} --output "${SIGNING_FILE}"
+if [ ! -f "${SIGNING_FILE}" ] ; then
+    curl ${signing_file_url} --output "${SIGNING_FILE}"
+fi
 # THE CREDENTIALS ARE LIST OF SHA256 OF TAR FILES AND FILE NAME OF THE TAR FILES
 gpg --homedir "${KEY_BASE}"  --decrypt "${SIGNING_FILE}" > "${CREDENTIALS}"
 cat "${CREDENTIALS}"
