@@ -21,6 +21,9 @@ export KEY_BASE=./.gnupg
 ## THe signed files
 export SIGNING_FILE=${SIGNER}.asc
 
+## This is where the directory where the project is to be built in.
+export BUILD_LOCATION="${PWD}/build-fancy"
+
 export BUILD_LOG=build-log.txt
 
 export TEST_LOG=test-log.txt
