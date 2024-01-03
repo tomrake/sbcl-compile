@@ -6,7 +6,7 @@ echo "BOOT_CONFIG=${BOOT_CONFIG}"
 cd ${RELEASE_VERSION}
 tar -xf sbcl-${RELEASE_VERSION}-source.tar.bz2
 cd sbcl-${RELEASE_VERSION}
-echo "sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS}
-sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS}
+echo "sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} 
+sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} | tee "${BUILD_LOG}"
 
 

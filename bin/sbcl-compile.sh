@@ -7,6 +7,8 @@ export BOOTING_COMPILER_OPTIONS="--no-userinit --no-sysinit"
 ## This is msys2/ucrt64 specific
 ##
 ### See sbcl source:  INSTALL 2.3 Troubleshooting "GNU Make not found"
+export COMPILE_BUILD_OPTIONS="--fancy"
+
 export GNUMAKE="c:/devel/msys64/ucrt64/bin/mingw32-make.exe"
 ## The release version we reference
 export RELEASE_VERSION="2.4.0"
@@ -19,5 +21,13 @@ export KEY_BASE=./.gnupg
 ## THe signed files
 export SIGNING_FILE=${SIGNER}.asc
 
+export BUILD_LOG=build-log.txt
+
+export TEST_LOG=test-log.txt
+
+export ANSI_TEST_LOG=ansi-test-log.txt
+
 sh bin/get_signed_source.sh
 sh bin/extract-build.sh
+sh bin/run-tests.sh
+sh bin/run-ansi-tests.sh
