@@ -7,7 +7,7 @@ cd ${RELEASE_VERSION}
 mkdir "${BUILD_LOCATION}"
 tar -xf sbcl-${RELEASE_VERSION}-source.tar.bz2 -C "${BUILD_LOCATION}"
 cd "${BUILD_LOCATION}/sbcl-${RELEASE_VERSION}"
-echo "sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} 
-sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} | tee "${BUILD_LOG}"
+echo "### UNAME: `uname` BUILD OPTIONS:  sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} > "${BUILD_LOG}" 
+sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} | tee -a "${BUILD_LOG}"
 
 
