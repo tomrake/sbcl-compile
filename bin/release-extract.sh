@@ -1,0 +1,9 @@
+#!/usr/bash
+# BUILD_LOCATIONS should be SOME_WHERE/$sbcl-${RELEASE_VERSION}
+# SOME_WHERE=${BUILD_NAME}
+# BUILD_LOCATION=${BUILD_NAME}/sbcl-${RELEASE_VERSION}
+# cd ${SOME_WHERE}
+cd ${RELEASE_VERSION}
+mkdir "${BUILD_LOCATION}"
+tar -xf sbcl-${RELEASE_VERSION}-source.tar.bz2 -C "${BUILD_LOCATION}"
+
