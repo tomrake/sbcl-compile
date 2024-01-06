@@ -1,0 +1,71 @@
+* Fetch Compile and Test SBCL Compilers
+
+The Goal of this project is to download, compile and test the Common Lisp implemenation SBCL.
+
+** Project Goals
+- Download released source from sourceforge, verify the signed release version.
+- Create a git repository from sourceforge and or github version of sbcl sources.
+- Compile the sbcl source code. The target build enviroment in msys2 on Windows. Allow customization of build options.
+- Run tests on the compiled resulting systems
+- Install the resulting sbcl system to a defined windows place.
+
+** Signed Release Versions
+The typical pattern is that the SBCL project admin Christophe Rhodes calls a code freeze each month and signs a release at the end of the month.
+There are public key blocks at https://sbcl.org/keys.html and Christophe Rhodes in known on public key servers by the ID D6839CA0A67F74D9DFB70922EBD595A9100D63CD
+The file sbcl-?.?.?-chrhodes.asc is gpg encryped by rhodes it contains the source, documentation-html and linux-binary files for the release and a SHA256 hash for a tar file of each release item.
+In the same directory as the release are bz2 compressed tar files.
+
+
+
+* The third iteration
+
+A user case review indicates the following structures.
+- Specification of a source 'name'
+  A name is a reference to the origin and updating procedure of sbcl source code.
+  - The Release version requires a specification before compilation.
+    The name is the release version currently "2.4.0"
+    I this case you may be compiling and testing and installing.
+  - The Git versions requires a specification before compilation.
+    In this case you may be modifying the sbcl code
+- Specification of a compilation 'name'
+  The various sbcl compilation  options may be grouped under a 'name'
+  - The release versions could be build and tested under this compilaton specs
+  - The git version could be developed under various compilation specs
+- The full product name is source-compilation specs.
+
+** As currently structued the release track works like this
+*** Source specification
+[[./bin/get_signed_source.sh]] get most of souce details from [[./bin/configuration.sh]]
+*** Compile specifcation
+[[./bin/extract-build.sh]] does the source expansion and compilation. The extraction and build need to be separated, as the extraction is release dependent while
+ build is both git and release applicable.
+*** Build Locations
+There is a directory somewhere say ./.build/ with subdirectories labeled version-compile name or git-name-compile name.
+Each one of these subdirectories is loaded with source to be compiled.
+
+*** Build Location layout
+- (sbcl-signature-check root)
+  - .xc-hosts < Where the crosscompilation hosts are stored, the host and targets are the same machine.
+    - 2.3.2
+      - sbcl-2.3.2-x86-64-windows-binary.msi  < the msi for the host compiler
+      - sbcl < the installation folder for the sbcl host compiler.	    
+  - .build-options
+These are files containing lists of sbcl build options.    
+    - fancy a file containing "--fancy"
+    - general a file containing ""
+  - .releases
+    - 2.4.0 < the holder of the release files
+      sbcl-2.4.0-source.tar.bz2 < the compressed tar file of released source.
+  - .build <all the builds are here
+    - 2.4.0 < the unpacked source-files for release version 2.4.0
+      - make.sh < the sbcl make script
+    - my_git < the git repo for a git compile
+      - .git <  the .git  folder
+      - nake.sh < the sbcl make script		
+
+Based on the above layout the following are:
+
+The host compiler is XC_HOST and XC_HOST_VERSION.
+XC_HOST_VERSION=2.3.2
+XC_HOST=$(root)/.xc-hosts/XC_HOST_VERSION/sbck/sbcl.exe --no-userinit --no-sysinit
+
