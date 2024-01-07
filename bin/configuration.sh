@@ -1,6 +1,6 @@
 
-export BOOTING_COMPILER="${PWD}/booting/sbcl/sbcl.exe"
-export BOOTING_COMPILER_OPTIONS="--no-userinit --no-sysinit" 
+export XC_HOST="${PWD}/booting/sbcl/sbcl.exe"
+export XC_HOST_OPTIONS="--no-userinit --no-sysinit" 
 #### NOTE
 ## This is msys2/ucrt64 specific
 ##

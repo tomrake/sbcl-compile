@@ -1,7 +1,7 @@
 #!/usr/bash
-echo "BOOTING_COMPILER=${BOOTING_COMPILER}"
-echo "BOOTING_COMPILER_OPTIONS=${BOOTING_COMPILER_OPTIONS}"
-BOOT_CONFIG="--xc-host=${BOOTING_COMPILER} ${BOOTING_COMPILER_OPTIONS}"
+echo "XC_HOST=${XC_HOST}"
+echo "XC_HOST_OPTIONS=${XC_HOST_OPTIONS}"
+BOOT_CONFIG="--xc-host=${XC_HOST} ${XC_HOST_OPTIONS}"
 echo "BOOT_CONFIG=${BOOT_CONFIG}"
 # SBCL_BUILD_LOCATION is set uniformly to location in the build-space where the build make.sh for sbcl is located.
 cd "${SBCL_BUILD_LOCATION}"
