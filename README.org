@@ -19,6 +19,16 @@ In the same directory as the release are bz2 compressed tar files.
 
 * The third iteration
 
+** Model
+
+#+begin_src dot :file test-dot.png
+	  graph {
+	  node [shape = box];
+  {git release} -- source -- compile -- tests -- install;
+  "compile options" -- compile;
+	   }
+#+end_src
+
 A user case review indicates the following structures.
 - Specification of a source 'name'
   A name is a reference to the origin and updating procedure of sbcl source code.
@@ -69,3 +79,11 @@ The host compiler is XC_HOST and XC_HOST_VERSION.
 XC_HOST_VERSION=2.3.2
 XC_HOST=$(root)/.xc-hosts/XC_HOST_VERSION/sbck/sbcl.exe --no-userinit --no-sysinit
 
+** Time to freeze  the iteration
+- The configuration delema
+Most user requests with a few customization options.
+But the general algoriths have many paramaters.
+Solution the general algorithm have common sense defaults that can be overrided by the users.
+
+Validate source release has long string to identify the signed, release signer designation.
+The same release signed has signed the releases for two of three years.
