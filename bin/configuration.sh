@@ -1,29 +1,30 @@
 
-export XC_HOST="${PWD}/booting/sbcl/sbcl.exe"
-export XC_HOST_OPTIONS="--no-userinit --no-sysinit" 
+Configuration of sbcl_compile installation
+
+
+#### Where the user portion oo SBCL_COMPILE data is located
+export SBCL_COMPILE_USER="${PWD}"
+#### Where the system potion of SBCL_COMPILE data is located
+export SBCL_COMPILE_SYSTEM="${PWD}"
+
+export SBCL_COMPILE_GIT_SOURCE="${SBCL_COMPIOE_USER}/gitsource"
+export SBCL_COMPILE_RELEASES="${SBCL_COMPILE_USER}/releases"
+export SBCL_COMPILE_BUILDS="${SBCL_COMPILE_USER}/builds"
+export SBCL_COMPILE_GNUPG="${SBCL_COMPILE_USER}/.gnupg"
+export SBCL_COMPILE_BOOTING="${SBCL_COMPILE_USER}/booting"
+
 #### NOTE
 ## This is msys2/ucrt64 specific
 ##
 ### See sbcl source:  INSTALL 2.3 Troubleshooting "GNU Make not found"
 export COMPILE_BUILD_OPTIONS="--fancy"
 
-export GNUMAKE="c:/devel/msys64/ucrt64/bin/mingw32-make.exe"
 ## The release version we reference
-export RELEASE_VERSION="2.4.0"
+
+export RELEASE_VERSION="2.3.8"
+####  Use defaults for the get_signed_source.sh
 ## The public signature of the signer   
-export SIGNING_KEY=D6839CA0A67F74D9DFB70922EBD595A9100D63CD
+#export RELEASE_SIGNER_ID=D6839CA0A67F74D9DFB70922EBD595A9100D63CD
 ## The current signer
-export SIGNER=crhodes
-## Where the GPG keys are stored
-export KEY_BASE=./.gnupg
-## THe signed files
-export SIGNING_FILE=${SIGNER}.asc
-
-## This is where the directory where the project is to be built in.
-export BUILD_LOCATION="${PWD}/build-fancy"
-
-export BUILD_LOG=build-log.txt
-
-export TEST_LOG=test-log.txt
-
-export ANSI_TEST_LOG=ansi-test-log.txt
+#export RELEASE_SIGNER=crhodes
+export BUILD_NAME="test-build"

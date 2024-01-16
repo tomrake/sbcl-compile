@@ -87,3 +87,22 @@ Solution the general algorithm have common sense defaults that can be overrided 
 
 Validate source release has long string to identify the signed, release signer designation.
 The same release signed has signed the releases for two of three years.
+
+
+* Component Documentation
+** configure.sh
+| SBCL_COMPILE_RELEASES | with version subdirectories - where to keep the cache of downloaded release artifacts |
+| SBCL_COMPILE_BUILDS   | with named subdirectotird - where sbcl candidate are built and tested         |
+|                       |                                                                             |
+
+** get_signed_source.sh
+Downloads anc verifies the signing of sbcl source release
+| RELEASE_SIGNER_ID | The public key server identity of the sbcl signer |
+| RELEASE_SIGNER    | The signers short name                            |
+| GNUPG_STORE       | The location of the local key store to be used    |
+
+The variable RELEASE_VERSION should be set to a release version string.
+
+
+** rekease-extract.sh
+Extracts the release version files into a build location.
