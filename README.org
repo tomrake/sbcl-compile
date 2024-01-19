@@ -88,7 +88,14 @@ Solution the general algorithm have common sense defaults that can be overrided 
 Validate source release has long string to identify the signed, release signer designation.
 The same release signed has signed the releases for two of three years.
 
+** Additional Components
+[2024-01-19]
+While debugging this round I added a series of additional components, which I need to go back and document.
+My current design problem is that the sbcl build operation cannot be fully specified until the source and build are both defined.
+Once these are known and verified the exact directory to execute the make.sh for sbcl constrution can be determined.
+This means the git and release versions can specify the exact directory for the build.
 
+The interface to the specification of that directory is by MAKE_DIRECTORY variable.
 * Component Documentation
 ** configure.sh
 | SBCL_COMPILE_RELEASES | with version subdirectories - where to keep the cache of downloaded release artifacts |

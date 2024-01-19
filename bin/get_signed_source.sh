@@ -87,3 +87,5 @@ cat signature-check.txt
 #### CLEANUP the .tar files.
 
 rm *.tar
+
+cd "${SBCL_COMPILE_SYSTEM}"

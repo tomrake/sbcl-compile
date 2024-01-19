@@ -13,3 +13,4 @@ if [ -f "${SBCL_COMPILE_BOOTING}/sbcl/sbcl.exe" ] ; then
     export XC_HOST="${SBCL_COMPILE_BOOTING}/sbcl/sbcl.exe"
     export XC_HOST_OPTIONS="--no-userinit --no-sysinit" 
 fi
+cd "${SBCL_COMPILE_SYSTEM}"
