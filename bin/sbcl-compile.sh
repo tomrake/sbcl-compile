@@ -10,5 +10,5 @@ source bin/get_signed_source.sh
 source bin/get_booting_compiler.sh
 source bin/release-extract.sh
 source bin/build.sh
-#sh bin/run-tests.sh
-#sh bin/run-ansi-tests.sh
+source bin/run-tests.sh
+source bin/run-ansi-tests.sh

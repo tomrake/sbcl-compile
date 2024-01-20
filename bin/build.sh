@@ -32,3 +32,4 @@ echo "### UNAME: `uname` BUILD OPTIONS:  sh make.sh ${BOOT_CONFIG}" ${COMPILE_BU
 sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} | tee -a "${BUILD_LOG}"
 
 
+cd "${SBCL_COMPILE_SYSTEM}"
