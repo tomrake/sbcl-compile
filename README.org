@@ -16,6 +16,27 @@ The file sbcl-?.?.?-chrhodes.asc is gpg encryped by rhodes it contains the sourc
 In the same directory as the release are bz2 compressed tar files.
 
 
+* Note on current work
+
+I am adding the install portion of the SBCL building.
+
+** An analysis of install.sh
+
+The --prefix option to make-config.sh overides the default which is based on OS_TYPE.
+This values is exported in output/prefix.def
+ 
+install.sh seems to take a single option: --prefix= which is then set to the value INSTALL_ROOT.
+
+My likely problem targeting the install location need to use the --prefix option to on install.sh
+
+Yes that was the problem with the install.
+** How to avoid make..sh execution
+install.sh checks for src/runtime/$RUNTIME and output/sbcl.core to see if there is anything to install.
+
+RUNTIME is either sbcl or sbcl.exe.
+
+This does not check on the other modules for rebuild.
+A better option would be to clean or remove the source to be built directory to force a full recomiple.
 
 * The third iteration
 
