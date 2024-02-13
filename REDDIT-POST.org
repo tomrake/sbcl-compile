@@ -1,0 +1,3 @@
+I have been compiling sbcl under msys2 for several years.
+My method was derived from this post August 2019 post https://solarianprogrammer.com/2019/08/20/building-sbcl-steel-bank-common-lisp-windows/
+I eventually created a bash script to update the process, because sbcl does monthly releases.

@@ -1,9 +1,15 @@
 #!/usr/bash
 #### The location of the booting compiler
 
+#######################################################################
 
+### This is an msys2 specific item
+
+### See sbcl source:  INSTALL 2.3 Troubleshooting "GNU Make not found"
 
 export GNUMAKE="c:/devel/msys64/ucrt64/bin/mingw32-make.exe"
+
+#######################################################################
 
 ## This is where the directory where the project is to be built in.
 export BUILD_LOG=build-log.txt
