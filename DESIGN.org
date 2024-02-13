@@ -1,0 +1,37 @@
+sbcl-compile
+
+My recipe for compiling sbcl from source on Windows 11 using msys2 with the ucrt64 enviroment.
+Much is owed to the August 20, 2019 blog post https://solarianprogrammer.com/2019/08/20/building-sbcl-steel-bank-common-lisp-windows/,
+after following Paul Silisteanu instructions I wrote a bash script to accomplish the entire task.
+
+Is the third design iteration of bash scripts to allow with compilation of sbcl lisp code on the msys2 platform.
+
+
+* MSYS2 details
+
+I believe the details of msys2 installation are a separate topic, (see [[https://www.msys2.org/wiki/MSYS2-installation/]]).
+The various msys2 enviroments allow compilation with various compilers gcc and clang under various version of Microsoft libraries.
+I have not fully explored compilation in the various msys2 enviroments but have focused on ucrt64.
+
+
+* Using sbcl-compile
+
+Once you  have a working msys2 ucrt64 enviroment with all the necessary packages installed you need to use git and clone sbcl-compile.
+The sbcl-compile bin/configuration.sh file is intended to be modified to change the compilation souce and installation location along with sbcl build options.
+On February 13, 2024 this usually means changing the variable RELEASE_VERSION to the sbcl version you wish to compile.
+Next change the BUILD_NAME to something that makes sense to you.
+Change the COMPILE_BUILD_OPTIONS too your liking.
+Make the INSTALL_LOCATION to a directory where you to install the compiled version.
+
+Next in the msys2 ucrt64 bash shell cd to the sbcl-compile directory and
+enter the sh bin/do-release-compile.sh. sbcl-compile will create working directories, download sbcl source, get the last official sbcl windows released compiler.
+And build and test a new sbcl lisp system.
+
+* Features of note
+- Only tiny part of this code is really dependent on msys2.
+- When using sbcl released source versions the tar archive is checked against the associated sha256 release signature.
+- sbcl requires a working common lisp system to build, this system downloads the last released windows binary for that purpose.
+
+* Uncompleted work
+- The ability to compile from a git repo of the sbcl source, this ie really need to hack sbcl.
+- Abstract the msys2 environment choice to the configuration option.
