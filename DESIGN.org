@@ -1,37 +1,101 @@
-sbcl-compile
-
-My recipe for compiling sbcl from source on Windows 11 using msys2 with the ucrt64 enviroment.
-Much is owed to the August 20, 2019 blog post https://solarianprogrammer.com/2019/08/20/building-sbcl-steel-bank-common-lisp-windows/,
-after following Paul Silisteanu instructions I wrote a bash script to accomplish the entire task.
-
-Is the third design iteration of bash scripts to allow with compilation of sbcl lisp code on the msys2 platform.
+* sbcl-compile
 
 
-* MSYS2 details
+** Using sbcl-compile
 
-I believe the details of msys2 installation are a separate topic, (see [[https://www.msys2.org/wiki/MSYS2-installation/]]).
-The various msys2 enviroments allow compilation with various compilers gcc and clang under various version of Microsoft libraries.
-I have not fully explored compilation in the various msys2 enviroments but have focused on ucrt64.
+*** Process Diagram
+
+#+begin_src dot :file phases.png
+  digraph phases {
+    ranksep=1.0; size = "32.0,32,0"
+    {
+   
+      node [shape = box; fontsize = 32];
+    /* The phase of compilation */
+      Start -> Configure -> Compile -> Test -> Install -> Finish;
+     
+    
+      node [shape = plaintext; fontsize=24]	
+      {rank = same; Configure; "Edit bin/configure.sh";}
+      {rank = same; Compile; "bin/do-release-compile.sh"; "bin/do-git-compile.sh";}
+      {rank = same; Test; "bin/run-tests.sh"; "bin/run-ansi-tests.sh";"Custom Testing";}
+      {rank = same; Install; "bin/do-install";}
+      
+    }
+  }
+#+end_src
+
+*** TLDR :)
+
+- Have a msys2 ucrt64 environment
+- Have all the necessary ucrt64 packages
+- Clone the repo
+- Enter the cloned repo
+- Edit bin/configuration.sh to your liking
+- sh bin/do-compile.sh
 
 
-* Using sbcl-compile
 
-Once you  have a working msys2 ucrt64 enviroment with all the necessary packages installed you need to use git and clone sbcl-compile.
-The sbcl-compile bin/configuration.sh file is intended to be modified to change the compilation souce and installation location along with sbcl build options.
-On February 13, 2024 this usually means changing the variable RELEASE_VERSION to the sbcl version you wish to compile.
-Next change the BUILD_NAME to something that makes sense to you.
-Change the COMPILE_BUILD_OPTIONS too your liking.
+*** The wordy instructions
+
+Once you  have a working msys2 ucrt64 environment with all the necessary packages installed you need to use git and clone sbcl-compile.
+The sbcl-compile bin/configuration.sh file is intended to be modified to change the compilation source and installation location along with SBCL build options.
+On February 13, 2024 this usually means changing the variable RELEASE_VERSION to the SBCL version you wish to compile.
+Now change the BUILD_NAME to something that makes sense to you.
+Change the COMPILE_BUILD_OPTIONS to your liking.
 Make the INSTALL_LOCATION to a directory where you to install the compiled version.
 
 Next in the msys2 ucrt64 bash shell cd to the sbcl-compile directory and
-enter the sh bin/do-release-compile.sh. sbcl-compile will create working directories, download sbcl source, get the last official sbcl windows released compiler.
-And build and test a new sbcl lisp system.
+enter the sh bin/do-release-compile.sh. sbcl-compile will create working directories, download SBCL source, getting the last official SBCL windows released compiler.
+And build and test a new SBCL lisp system.
 
-* Features of note
-- Only tiny part of this code is really dependent on msys2.
-- When using sbcl released source versions the tar archive is checked against the associated sha256 release signature.
-- sbcl requires a working common lisp system to build, this system downloads the last released windows binary for that purpose.
 
-* Uncompleted work
-- The ability to compile from a git repo of the sbcl source, this ie really need to hack sbcl.
-- Abstract the msys2 environment choice to the configuration option.
+** MSYS2 installation
+
+I believe the details of msys2 installation are a separate topic, (see [[https://www.msys2.org/wiki/MSYS2-installation/]]).
+The various msys2 environments allow compilation with various compilers gcc and clang under various versions of Microsoft libraries, ( see https://www.msys2.org/docs/environments/ )
+
+
+** Project Origin
+
+
+The expression of msys2 code compilation in executable code with comments follows.
+
+My recipe for compiling SBCL source on Windows 11 using msys2 in the ucrt64 environment.
+Much is owed to Paul Silisteanu's August 20, 2019 blog post https://solarianprogrammer.com/2019/08/20/building-sbcl-steel-bank-common-lisp-windows/,
+after following the instructions I wrote a bash script to accomplish the entire task.
+
+
+
+
+* The Design Iterations
+The first design was a simple download, compile, test, and install process that I hand-edited.
+
+In the second design release verification was added.
+The release source/git source switch was a hack.
+The configuration had too many items.
+
+The third iteration ended up modularizing code to perform the basic compile, test, and install.
+The details about keys and signing of releases have been moved into a module.
+Configuration has been streamlined to source, destination, and compiler build options.
+The do-* commands  do the various configured tasks by a sequence of sourced modules.
+
+
+** Still to be done
+
+*** Git source compile
+The do-compile-git.sh command needs to be coded.
+The git configuration items need to be specified in bin/configuration.sh.
+*** Alternate booting compiler
+Allow a configuration.sh to specify another lisp for the compilation of SBCL.
+*** Separate config, commands, and modules
+At the end of the third iteration, it seems I have divided the code into commands in bin and the modules that compose those commands.
+A fourth design iteration should separate the configuration, commands, and modules.
+*** MSYS2 Requirements
+#+begin_src sh
+## TODO Prescribe the code for the actual loading of msys2 packages needed by these scripts.
+#+end_src
+*** MSYS2 Possibilities
+
+I have not fully explored compilation in the various msys2 environments but have focused on ucrt64.
+
