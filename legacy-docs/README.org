@@ -1,5 +1,75 @@
-* Legacy Notes
-These are short notes of things I want to remember when I work on this again.
+* The evolution of this project
+** Compile sbcl under msys2
+- the August 20, 2019 post by the Solarian Programmer decribed a method.
+- I coded the method as a bash script.
+- This works for released versions of sbcl.
+** After Several Rounds of Released SBCL Versions
+- I just wanted to change the version string and repeat.
+- Checking for version signing became an itch to scratch.
+** Explore the complexity  of SBCL build process
+- There are contrib modules
+- There are various build options.
+- There is the XC_HOST "boot compiler"
+** Confront the complexity of choise by a well defined use process.
+- The process is
+  - config
+  - build (release option) or (git option)
+  - test - several options
+  - install
+- building is done as a named build location
+  - building copies the source from a downloaded release archive (or a git repo)
+    - There is an internal cloned repo and/or a cache for released artifacts.
+  - building needs a XC_HOST a common lisp used during the build
+    - The default XC_HOST is that latest Windows build that was released.
+    - As an option another common lisp can be used as the XC_HOST.
+  - building needs BUILD_OPTIONS defined by SBCL to be set for the compile.
+
+A sucessful build can be tested and installed.
+logs of all  builds sucessful or not can be examined in the build location.
+
+
+
+
+
+* Documentation based  on reddit comment
+The August 20, 2019 post https://solarianprogrammer.com/2019/08/20/building-sbcl-steel-bank-common-lisp-windows/ is what I started with.
+SBCL internally uses bash and make to build itself.
+SBCL also needs a working Common Lisp system to generate parts of itself.
+
+sbcl-compile consistst of the following directories
+- bin where the bash scripts are located
+- booting where a windows version of sbcl is located. The default XC_HOST
+- builds a directory named for each build. The target source is generated in a subdirectory by either
+  - expanded from a released source
+  - cloned of a git repo.
+- gitsource - a repo of the sbcl source code.
+- .gnupg - where the crytographic signing keys are stored
+- releases - by release version the downloaded release artificats.
+
+
+** Origins of source code
+I define two scenerios for sblc source.
+
+*** Released Code
+The first just uses that last source signed at release, which for sbcl is monthly.
+The other case is directly from a git repository. The singed and release version are stores in the release/version directory.
+*** git repo
+The released source case requires signature checking and download procedures.
+This case has not been coded yet!
+
+** Build configuration
+The sbcl make.sh has various build options for that command that control what and how things are built.
+
+
+** Building checks
+Before the a build can be done, the directory of the build and make.sh must be found.
+
+** Install location
+The installation location needs to be defined before the installation.
+
+* Fetch Compile and Test SBCL Compilers
+
+The Goal of this project is to download, compile and test the Common Lisp implemenation SBCL.
 
 ** Project Goals
 - Download released source from sourceforge, verify the signed release version.
