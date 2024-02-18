@@ -4,12 +4,12 @@ source bin/configuration.sh
 
 echo "RELEASE_VERSION=${RELEASE_VERSION}"
 
-source bin/initialize_sbcl_compile.sh
-source bin/ensure-build-container.sh
-source bin/get_signed_source.sh
-source bin/get_booting_compiler.sh
-source bin/release-extract.sh
-source bin/build.sh
-#source bin/run-tests.sh
-#source bin/run-ansi-tests.sh
-source bin/sbcl-install.sh
+source modules/initialize_sbcl_compile.sh
+source modules/ensure-build-container.sh
+source modules/get_signed_source.sh
+source modules/get_booting_compiler.sh
+source modules/release-extract.sh
+source modules/build.sh
+#source modules/run-tests.sh
+#source modules/run-ansi-tests.sh
+source modules/sbcl-install.sh
