@@ -86,7 +86,7 @@ The do-* commands  do the various configured tasks by a sequence of sourced modu
 *** Git source compile
 The do-compile-git.sh command needs to be coded.
 The git configuration items need to be specified in bin/configuration.sh.
-*** Alternate booting compiler
+*** Alternate XC_HOST compiler
 Allow a configuration.sh to specify another lisp for the compilation of SBCL.
 *** Separate config, commands, and modules
 At the end of the third iteration, it seems I have divided the code into commands in bin and the modules that compose those commands.

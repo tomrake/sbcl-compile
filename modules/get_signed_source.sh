@@ -1,11 +1,17 @@
 #! /bin/bash
+# A typical sbcl monthly release is signed by Christopher Rhodes.
+# and there is a public key for Rhodes.
+# A message signed by the release signer is encrypted by release signer.
+# A signed release consists of several tar.bz2 files where the tar files have a sha256 hash.
+
+
 
 #### Configuration/Customiztion
 
 ## These are slowly changing configuration values
 RELEASE_SIGNER_ID="${RELEASE_SIGNER_ID:=D6839CA0A67F74D9DFB70922EBD595A9100D63CD}"
 ## The current signer
-RELEASE_SIGNER="${RELASE_SIGNER:=crhodes}"
+RELEASE_SIGNER="${RELEASE_SIGNER:=crhodes}"
 
 if [ ! -d ${SBCL_COMPILE_GNUPG} ] ; then
     echo "sbcl_compile gmupg ${SBCL_COMPILE_GNUPG} not found"

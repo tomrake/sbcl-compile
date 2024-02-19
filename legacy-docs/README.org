@@ -38,7 +38,7 @@ SBCL also needs a working Common Lisp system to generate parts of itself.
 
 sbcl-compile consistst of the following directories
 - bin where the bash scripts are located
-- booting where a windows version of sbcl is located. The default XC_HOST
+- default-xc-host where a windows version of sbcl is located. The default XC_HOST
 - builds a directory named for each build. The target source is generated in a subdirectory by either
   - expanded from a released source
   - cloned of a git repo.

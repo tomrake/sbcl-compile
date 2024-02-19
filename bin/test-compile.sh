@@ -12,4 +12,3 @@ source modules/release-extract.sh
 source modules/build.sh
 #source modules/run-tests.sh
 #source modules/run-ansi-tests.sh
-source modules/sbcl-install.sh

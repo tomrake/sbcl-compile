@@ -1,4 +1,8 @@
 #!/usr/bash
+
+echo "The module extract-build.sh is still used"
+exit 1
+
 echo "XC_HOST=${XC_HOST}"
 echo "XC_HOST_OPTIONS=${XC_HOST_OPTIONS}"
 BOOT_CONFIG="--xc-host=${XC_HOST} ${XC_HOST_OPTIONS}"

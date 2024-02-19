@@ -12,7 +12,7 @@ export SBCL_COMPILE_GIT_SOURCE="${SBCL_COMPILE_USER}/gitsource"
 export SBCL_COMPILE_RELEASES="${SBCL_COMPILE_USER}/releases"
 export SBCL_COMPILE_BUILDS="${SBCL_COMPILE_USER}/builds"
 export SBCL_COMPILE_GNUPG="${SBCL_COMPILE_USER}/.gnupg"
-export SBCL_COMPILE_BOOTING="${SBCL_COMPILE_USER}/booting"
+export DEFAULT_SBCL_XC_HOST="${SBCL_COMPILE_USER}/default-xc-host"
 
 #######################################################################
 
