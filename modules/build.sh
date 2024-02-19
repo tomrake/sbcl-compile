@@ -14,7 +14,7 @@ export GNUMAKE="c:/devel/msys64/ucrt64/bin/mingw32-make.exe"
 #######################################################################
 
 ## This is where the directory where the project is to be built in.
-export BUILD_LOG=build-log.txt
+export BUILD_LOG=make-log.txt
 
 export TEST_LOG=test-log.txt
 
@@ -42,7 +42,7 @@ echo "BOOT_CONFIG=${BOOT_CONFIG}"
 
 
 cd "${MAKE_LOCATION}"
-echo "### DATE: `date +"%F_%T"` UNAME: `uname` BUILD OPTIONS:  sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} > "${BUILD_INFO}/${BUILD_LOG}" 
+echo `logging " BUILD OPTIONS:  sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS}` > "${BUILD_INFO}/${BUILD_LOG}" 
 sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} | tee -a "${BUILD_INFO}/${BUILD_LOG}"
 
 

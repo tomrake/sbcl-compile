@@ -25,5 +25,5 @@ mkdir "${BUILD_INFO}"
 
 
 # BEGIN INFO LOG
-echo "#### DATE: `date +"%F_%T"` UNAME: `uname` LOG: ensure-build-container.sh" >> "${BUILD_INFO}/building.log.txt"
-cp "${SBCL_COMPILE_SYSTEM}/bin/configuration.sh" "${BUILD_INFO}/`date +"%F_%T"`configuration.sh" 
+echo `logging " ensure-build-container.sh"` >> "${BUILD_INFO}/building.log.txt"
+cp "${SBCL_COMPILE_SYSTEM}/bin/configuration.sh" "${BUILD_INFO}/`datestamp`-configuration.sh" 

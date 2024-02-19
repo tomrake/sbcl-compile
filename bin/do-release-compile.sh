@@ -4,6 +4,7 @@ source bin/configuration.sh
 
 echo "RELEASE_VERSION=${RELEASE_VERSION}"
 
+source modules/logging-tools.sh
 source modules/initialize_sbcl_compile.sh
 source modules/ensure-build-container.sh
 source modules/get_signed_source.sh
