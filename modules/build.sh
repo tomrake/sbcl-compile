@@ -42,8 +42,8 @@ echo "BOOT_CONFIG=${BOOT_CONFIG}"
 
 
 cd "${MAKE_LOCATION}"
-echo "### UNAME: `uname` BUILD OPTIONS:  sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} > "${BUILD_LOG}" 
-sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} | tee -a "${BUILD_LOG}"
+echo "### DATE: `date +"%F_%T"` UNAME: `uname` BUILD OPTIONS:  sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} > "${BUILD_INFO}/${BUILD_LOG}" 
+sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} | tee -a "${BUILD_INFO}/${BUILD_LOG}"
 
 
 cd "${SBCL_COMPILE_SYSTEM}"

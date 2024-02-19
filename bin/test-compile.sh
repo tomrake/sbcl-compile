@@ -10,5 +10,5 @@ source modules/get_signed_source.sh
 source modules/get_default_xc_host.sh
 source modules/release-extract.sh
 source modules/build.sh
-#source modules/run-tests.sh
-#source modules/run-ansi-tests.sh
+source modules/run-tests.sh
+source modules/run-ansi-tests.sh
