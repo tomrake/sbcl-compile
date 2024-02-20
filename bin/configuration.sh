@@ -41,6 +41,11 @@ export RELEASE_VERSION="2.4.1"
 #### Building details
 
 
+#### XC_HOST defines the cross compiler to use.
+##   When XC_HOST is not set the last released Windows version is downloaded and used.
+##
+#export XC_HOST="c:/Users/Public/Lispers/sbcl/installed/2.4.1/2.4.1-fancy/bin/sbcl.exe"
+#export XC_HOST_OPTIONS="--no-userinit --no-sysinit"
 
 export COMPILE_BUILD_OPTIONS="--fancy"
 
