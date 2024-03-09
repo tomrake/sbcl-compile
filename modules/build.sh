@@ -40,10 +40,25 @@ echo "BOOT_CONFIG=${BOOT_CONFIG}"
 
 # build because For release source orthe  git source  MAKE_LOCATION should be correctly set. 
 
+if [ "$OSTYPE" = "cygwin" -o "$OSTYPE" = "msys" ] ; then
+    RUNTIME=sbcl.exe
+else
+    RUNTIME=sbcl
+fi
 
-cd "${MAKE_LOCATION}"
-echo `logging " BUILD OPTIONS:  sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS}` > "${BUILD_INFO}/${BUILD_LOG}" 
-sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} | tee -a "${BUILD_INFO}/${BUILD_LOG}"
+if [ -f "${MAKE_LOCATION}/src/runtime/${RUNTIME}" ]; then
+    if [ -f "${MAKE_LOCATION}/output/sbcl.core" ]; then
+	PREVIOUS_BUILD="true"
+    fi
+fi
+if [ "${PREVIOUS_BUILD}" == "true" ] ; then
+    echo "!!!! NOTE: This build will not be remade. A previous build will be used."
+    echo "!!!! Remove the directory: ${BUILD_MAKE} for force a rebuild."
+else
+    cd "${MAKE_LOCATION}"
+    echo `logging " BUILD OPTIONS:  sh make.sh ${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS}` > "${BUILD_INFO}/${BUILD_LOG}" 
+    sh make.sh "${BOOT_CONFIG}" ${COMPILE_BUILD_OPTIONS} | tee -a "${BUILD_INFO}/${BUILD_LOG}"
+fi
 
 
 cd "${SBCL_COMPILE_SYSTEM}"
