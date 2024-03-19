@@ -6,7 +6,7 @@
 # use that last windows release
 FILEURL=https://master.dl.sourceforge.net/project/sbcl/sbcl/2.3.2/sbcl-2.3.2-x86-64-windows-binary.msi?viasf=1
 FILE="sbcl-2.3.2-x86-64-windows-binary.msi"
-if [  -z "${XC_HOST}"] ; then
+if [  -z "${XC_HOST}" ] ; then
     echo  "Loading default XC_HOST"
     cd "${DEFAULT_SBCL_XC_HOST}"
     if [ !  -f $FILE ] ;  then    
