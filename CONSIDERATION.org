@@ -1,0 +1,54 @@
+#+TITLE: Consideration of sbcl-compile
+
+* Release - Git Tracks
+
+A founding principle is to have a release based compile system largely for production systems and,
+a git based compile system for development and bug fixing.
+
+* Modules
+
+The system was lately converted  to a modular design, where a series of modules were created to common tasks.
+The binary command are made from a sequence of module calls.
+
+* Executables
+
+Which track release or git
+
+** Command specific
+- build-from-release
+- build-from-git
+
+  generic commands are done after the build
+  - test
+  - install
+
+
+**  Configuration specific
+- A build-type of release or git is defined.
+- A generic build command is issued.
+
+* Build Caching
+- retrieved source is placed in a build-container
+- once a build has been sucessful it does not need to be redone.
+
+The main reason for this is that the install command effectivly does the source extraction, build and testing as necessary before the install.
+
+Based on this philosophy the specific testing should also be specified in the configuration.
+Should the build caching and testing be controlled by a configuration settings.
+
+
+* Build control by configuration
+- provision build container
+  - Always a new one - no build caching, source is always pristine.
+  - git should always update source because this is development it is likely the build container need a *make clean*
+  - release build should be one build unless changes in COMPILE_BUILD_OPTIONS have changed.
+
+
+* The multiple exexuting paths perspective
+
+Build caching is a concept intertwinned with multiple executions, or the cache would be unnecessary.
+A build container can be built several times as source code is changed, build options are changed and testing results is accepted.
+
+** source from release v source from git
+build-sbcl has two fundamentaion ways to obtain sbcl source, from signed release and from git.
+The build container must be marked with essential data for both methods.
