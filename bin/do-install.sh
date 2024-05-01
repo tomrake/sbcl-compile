@@ -12,8 +12,6 @@ if [ ! -d "${INSTALL_LOCATION}" ] ; then
     exit 1
 fi
 source modules/ensure-build-container.sh
-source modules/get_signed_source.sh
-source modules/release-extract.sh
 source modules/ensure_xc_host.sh
 source modules/build.sh
 #source modules/run-tests.sh
