@@ -26,7 +26,7 @@ export CONFIG_BUILD_TYPE="release"
 
 
 
-export RELEASE_VERSION="2.4.3"
+export RELEASE_VERSION="2.4.5"
 
 #### The Release signing details
 ####  Use defaults for the get_signed_source.sh
@@ -62,7 +62,7 @@ export COMPILE_BUILD_OPTIONS="--fancy"
 
 ## The build name for the build
 ## Change to what ever you want to call it.
-export BUILD_NAME="2.4.3-fancy"
+export BUILD_NAME="2.4.5-fancy"
 
 ## Various make.sh options should also be changed.
 ## TBD - Add variable for those options.

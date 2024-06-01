@@ -4,8 +4,8 @@
 # And sets the XC_HOST and XC_HOST options to match.
 
 # use that last windows release
-FILEURL=https://master.dl.sourceforge.net/project/sbcl/sbcl/2.4.3/sbcl-2.4.3-x86-64-windows-binary.msi?viasf=1
-FILE="sbcl-2.4.3-x86-64-windows-binary.msi"
+FILEURL=https://master.dl.sourceforge.net/project/sbcl/sbcl/2.4.5/sbcl-2.4.5-x86-64-windows-binary.msi?viasf=1
+FILE="sbcl-2.4.5-x86-64-windows-binary.msi"
 if [  -z "${XC_HOST}" ] ; then
     echo  "Loading default XC_HOST"
     cd "${DEFAULT_SBCL_XC_HOST}"
