@@ -1,7 +1,7 @@
 #! /bin/bash
 
 function datestamp () {
-    echo `date +"%F_%T"`
+    echo `date +"%F-%H_%M_%S"`
 }
 
 function logging  () {
