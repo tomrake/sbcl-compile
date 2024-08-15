@@ -1,0 +1,19 @@
+#+TITLE: A series of bash scripts to compile SBCL on MSYS2
+
+* The Dream
+To use [[https://www.gnu.org/software/emacs/][emacs]], [[https://slime.common-lisp.dev/][slime]] and [[https://sbcl.org/][sbcl]] on native Windows, the emacs/slime/sbcl was the recommend way to learn lisp.
+I choose MSYS2 for the gnu tools to do the compilation.
+
+* A Competitive Dream
+A decade ago I did most of my programming in [[https://pharo.org/][pharo]] which is a Smalltalk.
+While coding in Smalltalk is impressive there are times I encountered the limits of the Smalltalk VMs over the size of methods.
+I learned that Smalltalk was developed/booted in a LISP before becoming self compiling.
+Since switching to lisp I still miss the Smalltalk UI when I want to display work.
+
+* Enter CLOG
+Many of my project that really needed graphic display can now use [[https://github.com/rabbibotton/clog][CLOG]].
+Smalltalk had a low of graphic primatives and CLOG is adding the html view to almost any project.
+
+* Looking for MoldableDevelopment
+There is a Smalltalk development technique where the programmer traps the DoNotUnderstand message implements various methods and restarts the evaluation.
+This allows various "protcol" type systems to be written in small pieces as needed.
