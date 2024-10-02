@@ -39,14 +39,14 @@ export DEFAULT_SBCL_XC_HOST="${SBCL_COMPILE_USER}/default-xc-host"
 #### The Released Source options
 
 #### This determined the version of the sbcl.org windows version to use.
-export MSI_VERSION="2.4.7"
+export MSI_VERSION="2.4.9"
 
 #### This specified a MSYS2 compiled version of sbcl to use.
 #export LEGACY_MSYS2_VERSION=
 
 
 #### This is sbcl release version to build
-export RELEASE_VERSION="2.4.7"
+export RELEASE_VERSION="2.4.9"
 
 #### The Release signing details
 ####  Use defaults for the get_signed_source.sh
