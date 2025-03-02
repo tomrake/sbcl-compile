@@ -46,7 +46,7 @@ export MSI_VERSION="2.5.0"
 
 
 #### This is sbcl release version to build
-export RELEASE_VERSION="2.5.0"
+export RELEASE_VERSION="2.5.2"
 
 #### The Release signing details
 ####  Use defaults for the get_signed_source.sh
