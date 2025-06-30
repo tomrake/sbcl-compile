@@ -16,7 +16,7 @@ if [  -z "${XC_HOST}" ] ; then
 	curl "${FILEURL}" --output "${FILE}"
 	msiextract  "${FILE}"
 	mkdir "./backup-stuff"
-	mv ./sbcl ./backup-stuff
+	mv "./sbcl" "./backup-stuff/sbcl_$(date +%Y%m%d%H%M%S)_$RANDOM/"
 	mv "PFiles/Steel Bank Common Lisp" ./sbcl
     else
 	echo "Default found ${FILE} in ${DEFAULT_SBCL_XC_HOST}"
