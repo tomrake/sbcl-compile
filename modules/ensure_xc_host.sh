@@ -13,7 +13,7 @@ if [  -z "${XC_HOST}" ] ; then
     cd "${DEFAULT_SBCL_XC_HOST}"
     if [ !  -f ${FILE} ] ;  then
 	echo "Not Found, Downloading default MSI ${FILE}"
-	curl "${FILEURL}" --output "${FILE}"
+	curl -L "${FILEURL}" --output "${FILE}"
 	msiextract  "${FILE}"
 	mkdir "./backup-stuff"
 	mv "./sbcl" "./backup-stuff/sbcl_$(date +%Y%m%d%H%M%S)_$RANDOM/"

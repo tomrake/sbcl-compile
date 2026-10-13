@@ -38,7 +38,7 @@ gpg --homedir "${SBCL_COMPILE_GNUPG}" --list-keys "${RELEASE_SIGNER_ID}" || gpg 
 
 #### Ensure we have a message from the release signer.
 if [ ! -f "${SIGNED_MESSAGE_FILE}" ] ; then
-    curl ${SIGNED_MESSAGE_URL} --output "${SIGNED_MESSAGE_FILE}"
+    curl -L ${SIGNED_MESSAGE_URL} --output "${SIGNED_MESSAGE_FILE}"
 fi
 
 #### Decypt the message from release signer
@@ -57,7 +57,7 @@ cat "${FILE_SHA256_LIST}"
 FILEURL=https://master.dl.sourceforge.net/project/sbcl/sbcl/${RELEASE_VERSION}/sbcl-${RELEASE_VERSION}-source.tar.bz2?viasf=1
 FILE="sbcl-${RELEASE_VERSION}-source.tar.bz2"
 if [ ! -f $FILE ] ; then
-    curl "${FILEURL}" --output "$FILE"
+    curl -L "${FILEURL}" --output "$FILE"
 fi
 bunzip2 -k  "$FILE"
 
@@ -66,7 +66,7 @@ bunzip2 -k  "$FILE"
 FILEURL=https://master.dl.sourceforge.net/project/sbcl/sbcl/${RELEASE_VERSION}/sbcl-${RELEASE_VERSION}-documentation-html.tar.bz2?viasf=1
 FILE="sbcl-${RELEASE_VERSION}-documentation-html.tar.bz"
 if [ ! -f $FILE ] ; then
-    curl "${FILEURL}" --output "$FILE"
+    curl -L "${FILEURL}" --output "$FILE"
 fi
 bunzip2 -k "$FILE"
 
